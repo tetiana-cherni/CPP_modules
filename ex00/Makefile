@@ -1,6 +1,5 @@
 NAME := megaphone
 
-# CC := cc
 CXX := c++
 CXXFLAGC := -Wall -Wextra -Werror -std=c++17 
 BUILD_DIR := obj
