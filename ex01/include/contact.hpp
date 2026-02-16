@@ -3,6 +3,7 @@
 
 // #include <iostream>
 #include <string>
+#include <cctype>
 
 class Contact {
 	private:
@@ -12,17 +13,24 @@ class Contact {
 		std::string	phone_number_;
 		std::string	darkest_secret_;
 
-		bool IsEmptyLine(std::string line);
+		bool IsEmptyLine(const std::string& line);
+		bool IsValidPhoneNumber(const std::string& line);
 
 	public:
+		enum class CheckError{
+			Ok,
+			EmptyLine,
+			NotNumber
+		};
+
 		Contact();
 		~Contact();
 
-		bool SetFirstName(std::string line);
-		bool SetLastName(std::string line);
-		bool SetNickname(std::string line);
-		bool SetPhoneNumber(std::string line);
-		bool SetDarkestSecret(std::string line);
+		CheckError SetFirstName(std::string line);
+		CheckError SetLastName(std::string line);
+		CheckError SetNickname(std::string line);
+		CheckError SetPhoneNumber(std::string line);
+		CheckError SetDarkestSecret(std::string line);
 		const std::string& GetFirstName() const;
 		const std::string& GetLastName() const;
 		const std::string& GetNickname() const;
