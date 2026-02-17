@@ -1,7 +1,7 @@
-#ifndef CONTACT_H
-#define CONTACT_H
+#ifndef CONTACT_HPP
+#define CONTACT_HPP
 
-// #include <iostream>
+#include <iostream>
 #include <string>
 #include <cctype>
 
@@ -13,8 +13,8 @@ class Contact {
 		std::string	phone_number_;
 		std::string	darkest_secret_;
 
-		bool IsEmptyLine(const std::string& line);
-		bool IsValidPhoneNumber(const std::string& line);
+		bool IsEmptyLine(const std::string& line) const;
+		bool IsValidPhoneNumber(const std::string& line) const;
 
 	public:
 		enum class CheckError{

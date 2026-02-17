@@ -1,4 +1,4 @@
-#include "contact"
+#include "contact.hpp"
 
 //constructor
 Contact::Contact()
@@ -35,7 +35,7 @@ bool Contact::IsValidPhoneNumber(const std::string& line) const
 
 //setter
 
-CheckError Contact::SetFirstName(std::string line)
+Contact::CheckError Contact::SetFirstName(std::string line)
 {
 	if (IsEmptyLine(line))
 		return CheckError::EmptyLine;
@@ -43,7 +43,7 @@ CheckError Contact::SetFirstName(std::string line)
 	return CheckError::Ok;
 }
 
-CheckError Contact::SetLasttName(std::string line)
+Contact::CheckError Contact::SetLastName(std::string line)
 {
 	if (IsEmptyLine(line))
 		return CheckError::EmptyLine;
@@ -51,7 +51,7 @@ CheckError Contact::SetLasttName(std::string line)
 	return CheckError::Ok;
 }
 
-CheckError Contact::SetNickname(std::string line)
+Contact::CheckError Contact::SetNickname(std::string line)
 {
 	if (IsEmptyLine(line))
 		return CheckError::EmptyLine;
@@ -59,7 +59,7 @@ CheckError Contact::SetNickname(std::string line)
 	return CheckError::Ok;
 }
 
-CheckError Contact::SetPhoneNumber(std::string line)
+Contact::CheckError Contact::SetPhoneNumber(std::string line)
 {
 	if (IsEmptyLine(line))
 		return CheckError::EmptyLine;
@@ -69,37 +69,37 @@ CheckError Contact::SetPhoneNumber(std::string line)
 	return CheckError::Ok;
 }
 
-CheckError Contact::SetDarkestSecret(std::string line)
+Contact::CheckError Contact::SetDarkestSecret(std::string line)
 {
 	if (IsEmptyLine(line))
 		return CheckError::EmptyLine;
-	darkest secret_ = line;
+	darkest_secret_ = line;
 	return CheckError::Ok;
 }
 
 //getter
 
-const std::string& Contact::GetFirstName()
+const std::string& Contact::GetFirstName() const
 {
 	return first_name_ ;
 }
 
-const std::string& Contact::GetLasttName()
+const std::string& Contact::GetLastName() const
 {
 	return last_name_ ;
 }
 
-const std::string& Contact::GetNickname()
+const std::string& Contact::GetNickname() const
 {
 	return nickname_ ;
 }
 
-const std::string& Contact::GetPhoneNumber()
+const std::string& Contact::GetPhoneNumber() const
 {
-	return phonenumber_ ;
+	return phone_number_ ;
 }
 
-const std::string& Contact::GetDarkestSecret()
+const std::string& Contact::GetDarkestSecret() const
 {
-	return darkestsecret_ ;
+	return darkest_secret_ ;
 }
