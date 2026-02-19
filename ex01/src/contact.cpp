@@ -25,12 +25,22 @@ Contact::~Contact()
 // utility methods
 bool Contact::IsEmptyLine(const std::string& line) const
 {
-	return line.find_first_not_of(" \t\n") == std::string::npos;
+	return line.find_first_not_of(" \t") == std::string::npos;
 }
 
 bool Contact::IsValidPhoneNumber(const std::string& line) const
 {
-	return line.find_first_not_of("+0123456789") == std::string::npos;
+	size_t start;
+
+	start = line.find_first_not_of(" \t");
+	if (line[start] == '+')
+		start++;
+	if (start == line.length() - 1)
+		return false;
+	if (line.find_first_not_of("0123456789", start) == std::string::npos)
+		return true;
+	else
+		return false;
 }
 
 //setter

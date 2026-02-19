@@ -66,6 +66,7 @@ TEST_CASE("ContactTests, SetPhoneNumberNotNumber") {
 	CHECK(c.SetPhoneNumber("12abcd") == Contact::CheckError::NotNumber);
 	CHECK(c.SetPhoneNumber("abcd") == Contact::CheckError::NotNumber);
 	CHECK(c.SetPhoneNumber("12O34") == Contact::CheckError::NotNumber);
+	CHECK(c.SetPhoneNumber("3+48") == Contact::CheckError::NotNumber);
 }
 
 TEST_CASE("ContactTests, SetDarkestSecret"){
