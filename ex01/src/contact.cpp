@@ -3,7 +3,7 @@
 //constructor
 Contact::Contact()
 {
-	#ifndef DEBUG
+	#ifdef DEBUG
 		std::cout << "Contact constructor called" << std::endl;
 	#endif
 
@@ -17,7 +17,7 @@ Contact::Contact()
 //destructor
 Contact::~Contact()
 {
-	#ifndef DEBUG
+	#ifdef DEBUG
 		std::cout << "Contact constructor called" << std::endl;
 	#endif
 }
@@ -63,7 +63,7 @@ Contact::CheckError Contact::SetPhoneNumber(std::string line)
 {
 	if (IsEmptyLine(line))
 		return CheckError::EmptyLine;
-	if (IsValidPhoneNumber(line))
+	if (!IsValidPhoneNumber(line))
 		return CheckError::NotNumber;
 	phone_number_ = line;
 	return CheckError::Ok;
