@@ -25,4 +25,56 @@ TEST_CASE("ContactTests, SetFirstNameEmpty") {
 	CHECK(c.SetFirstName("") == Contact::CheckError::EmptyLine);
 }
 
+TEST_CASE("ContactTests, SetLastName") {
+	Contact c;
+	CHECK(c.SetLastName("Ride") == Contact::CheckError::Ok);
+	CHECK(c.GetLastName() == "Ride");
+}
 
+TEST_CASE("ContactTests, SetLastNameEmpty") {
+	Contact c;
+	CHECK(c.SetLastName("") == Contact::CheckError::EmptyLine);
+}
+
+TEST_CASE("ContactTests, SetNickname") {
+	Contact c;
+	CHECK(c.SetNickname("Ukraine") == Contact::CheckError::Ok);
+	CHECK(c.GetNickname() == "Ukraine");
+}
+
+TEST_CASE("ContactTests, SetNicknameEmpty") {
+	Contact c;
+	CHECK(c.SetNickname("") == Contact::CheckError::EmptyLine);
+}
+
+TEST_CASE("ContactTests, SetPhoneNumber") {
+	Contact c;
+	CHECK(c.SetPhoneNumber("+3429844678") == Contact::CheckError::Ok);
+	CHECK(c.GetPhoneNumber() == "+3429844678");
+	CHECK(c.SetPhoneNumber("123456789") == Contact::CheckError::Ok);
+	CHECK(c.GetPhoneNumber() == "123456789");
+}
+
+TEST_CASE("ContactTests, SetPhoneNumberEmpty") {
+	Contact c;
+	CHECK(c.SetPhoneNumber("") == Contact::CheckError::EmptyLine);
+}
+
+TEST_CASE("ContactTests, SetPhoneNumberNotNumber") {
+	Contact c;
+	CHECK(c.SetPhoneNumber("-348") == Contact::CheckError::NotNumber);
+	CHECK(c.SetPhoneNumber("12abcd") == Contact::CheckError::NotNumber);
+	CHECK(c.SetPhoneNumber("abcd") == Contact::CheckError::NotNumber);
+	CHECK(c.SetPhoneNumber("12O34") == Contact::CheckError::NotNumber);
+}
+
+TEST_CASE("ContactTests, SetDarkestSecret"){
+	Contact c;
+	CHECK(c.SetDarkestSecret("DarkestSecret = 42!") == Contact::CheckError::Ok);
+	CHECK(c.GetDarkestSecret() == "DarkestSecret = 42!");
+}
+
+TEST_CASE("ContactTests, SetDarkestSecretEmpty"){
+	Contact c;
+	CHECK(c.SetDarkestSecret("") == Contact::CheckError::EmptyLine);
+}
