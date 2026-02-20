@@ -1,21 +1,34 @@
-NAME := megaphone
+NAME := phonebook
 
 CXX := c++
-CXXFLAGC := -Wall -Wextra -Werror -std=c++17 
+CXXFLAGS = -Wall -Wextra -Werror -std=c++17 
 BUILD_DIR := obj
-SRC := megaphone.cpp
+INC_DIR := include
+CXXFLAGS += -I $(INC_DIR)
+SRC_DIR := src
+SRC_MAIN := main.cpp
+
+SRC := contact.cpp
+
 OBJ := $(addprefix $(BUILD_DIR)/,$(SRC:.cpp=.o))
+
+#test
+TEST_NAME = test_phonebook
+TEST_DIR := tests
+TEST_FLAGS := -I $(TEST_DIR) -pthread
+TEST_SRC := $(SRC_DIR)/$(SRC) \
+		$(TEST_DIR)/test_contact.cpp 
 
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	@$(CXX) $(CXXFLAGC) $(OBJ) -o $(NAME)
+	@$(CXX) $(CXXFLAGS) $(OBJ) -o $(NAME)
 	@echo "$(NAME) successfully built."
 
-$(BUILD_DIR)/%.o: %.cpp
+$(BUILD_DIR)/%.o: $(SRC_DIR)/%.cpp
 	@mkdir -p $(BUILD_DIR)
-	@$(CXX) $(CXXFLAGC) -c $< -o $@
-	@echo "Object files created."
+	@$(CXX) $(CXXFLAGS) -c $< -o $@
+	@echo "Compiled $< successfully."
 
 clean:
 	@rm -fr $(BUILD_DIR)
@@ -27,5 +40,11 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re
+test:
+	@echo "Test compilation starts.."
+	@$(CXX) $(CXXFLAGS) $(TEST_FLAGS) $(TEST_SRC) -o $(TEST_DIR)/$(TEST_NAME)
+	@echo "Run tests:"
+	$(TEST_DIR)/./$(TEST_NAME)
+
+.PHONY: all clean fclean re test
 
