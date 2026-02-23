@@ -34,9 +34,11 @@ bool Contact::IsValidPhoneNumber(const std::string& line) const
 
 	start = line.find_first_not_of(" \t");
 	if (line[start] == '+')
+	{
 		start++;
-	if (start == line.length() - 1)
-		return false;
+		if (start == line.length() - 1)
+			return false;
+	}
 	if (line.find_first_not_of("0123456789", start) == std::string::npos)
 		return true;
 	else
@@ -89,27 +91,27 @@ Contact::CheckError Contact::SetDarkestSecret(std::string line)
 
 //getter
 
-const std::string& Contact::GetFirstName() const
+const std::string& Contact::first_name() const
 {
 	return first_name_ ;
 }
 
-const std::string& Contact::GetLastName() const
+const std::string& Contact::last_name() const
 {
 	return last_name_ ;
 }
 
-const std::string& Contact::GetNickname() const
+const std::string& Contact::nickname() const
 {
 	return nickname_ ;
 }
 
-const std::string& Contact::GetPhoneNumber() const
+const std::string& Contact::phone_number() const
 {
 	return phone_number_ ;
 }
 
-const std::string& Contact::GetDarkestSecret() const
+const std::string& Contact::darkest_secret() const
 {
 	return darkest_secret_ ;
 }

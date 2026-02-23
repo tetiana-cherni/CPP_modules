@@ -23,6 +23,7 @@ class Contact {
 			NotNumber
 		};
 
+		static const int kFieldsNum = 5;
 		Contact();
 		~Contact();
 
@@ -31,11 +32,11 @@ class Contact {
 		CheckError SetNickname(std::string line);
 		CheckError SetPhoneNumber(std::string line);
 		CheckError SetDarkestSecret(std::string line);
-		const std::string& GetFirstName() const;
-		const std::string& GetLastName() const;
-		const std::string& GetNickname() const;
-		const std::string& GetPhoneNumber() const;
-		const std::string& GetDarkestSecret() const;
+		const std::string& first_name() const;
+		const std::string& last_name() const;
+		const std::string& nickname() const;
+		const std::string& phone_number() const;
+		const std::string& darkest_secret() const;
 };
 
 #endif

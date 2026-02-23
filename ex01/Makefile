@@ -47,7 +47,6 @@ test:
 	@echo "Test compilation starts.."
 	@$(CXX) $(CXXFLAGS) $(TEST_FLAGS) $(TEST_SRC) -o $(TEST_DIR)/$(TEST_NAME)
 	@echo "Run tests:"
-# 	$(TEST_DIR)/./$(TEST_NAME)
 	@./$(TEST_DIR)/$(TEST_NAME)
 
 .PHONY: all clean fclean re test
