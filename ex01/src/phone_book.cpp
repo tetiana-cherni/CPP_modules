@@ -222,29 +222,3 @@ void PhoneBook::ShowContact()
 	}
 	PrintContact(std::stoi(input));
 }
-
-// void PhoneBook::ShowContact()
-// {
-// 	std::string	input;
-// 	std::string	num;
-
-// 	num = std::to_string(total_cont_num_ - 1);
-// 	while (1)
-// 	{
-// 		PrintMsg("Enter contact index: ", kCyn, false);
-// 		input = ReadLine();
-// 		if (input.length() == 1 && input.find_first_not_of("01234567") == std::string::npos)
-// 		{
-// 			if (std::stoi(input) >= total_cont_num_)
-// 			{
-// 				PrintMsg("This index doesn't exist. Check what we have in th phone book", kRed, true);
-// 				ShowAllContacts();
-// 			}
-// 			else
-// 				break;
-// 		}
-// 		else
-// 			PrintMsg("Invalid input. Please enter a single digit from 0 to " + num, kRed , true);
-// 	}
-// 	PrintContact(std::stoi(input));
-// }
