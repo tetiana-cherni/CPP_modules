@@ -1,4 +1,3 @@
-// #pragma once
 #ifndef PHONE_BOOK_HPP
 #define PHONE_BOOK_HPP
 
@@ -12,7 +11,7 @@ class PhoneBook {
 		int					next_index_;
 		int					total_cont_num_;
 
-		// error message
+		// error messages
 		const std::string kEmptyLine = "This field cannot be empty. Please try again.";
 		const std::string kNotDigit = "Phone number must contain only digits. Please try again.";
 
