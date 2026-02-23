@@ -6,44 +6,45 @@
 
 TEST_SUITE("Contact"){
 
-	TEST_CASE("ConstructorInitialization") {
+	TEST_CASE("Constructor Initialisation") {
 		Contact c;
 
-		CHECK(c.GetFirstName() == "");
-		CHECK(c.GetLastName() == "");
-		CHECK(c.GetNickname() == "");
-		CHECK(c.GetPhoneNumber() == "");
-		CHECK(c.GetDarkestSecret() == "");
+		CHECK(c.first_name() == "");
+		CHECK(c.last_name() == "");
+		CHECK(c.nickname() == "");
+		CHECK(c.phone_number() == "");
+		CHECK(c.darkest_secret() == "");
 	}
 
-	TEST_CASE("Setters validation and modofocation"){
+	TEST_CASE("Setters validation and modification"){
 
 		Contact c;
 
 		SUBCASE("FirstName") {
 			CHECK(c.SetFirstName("John") == Contact::CheckError::Ok);
-			CHECK(c.GetFirstName() == "John");
+			CHECK(c.first_name() == "John");
 			CHECK(c.SetFirstName("") == Contact::CheckError::EmptyLine);
 		}
 
 		SUBCASE("LastName"){
 			CHECK(c.SetLastName("Ride") == Contact::CheckError::Ok);
-			CHECK(c.GetLastName() == "Ride");
+			CHECK(c.last_name() == "Ride");
 			CHECK(c.SetLastName("") == Contact::CheckError::EmptyLine);
 		}
 
 		SUBCASE("Nickname"){
 			CHECK(c.SetNickname("Ukraine") == Contact::CheckError::Ok);
-			CHECK(c.GetNickname() == "Ukraine");
+			CHECK(c.nickname() == "Ukraine");
 			CHECK(c.SetNickname("") == Contact::CheckError::EmptyLine);
 		}
 
 		SUBCASE("PhoneNumber"){
 			//valid input
 				CHECK(c.SetPhoneNumber("+3429844678") == Contact::CheckError::Ok);
-				CHECK(c.GetPhoneNumber() == "+3429844678");
+				CHECK(c.phone_number() == "+3429844678");
 				CHECK(c.SetPhoneNumber("123456789") == Contact::CheckError::Ok);
 				CHECK(c.GetPhoneNumber() == "123456789");
+				CHECK(c.SetPhoneNumber("2") == Contact::CheckError::Ok);
 				
 			// invalid input
 				CHECK(c.SetPhoneNumber("") == Contact::CheckError::EmptyLine);
@@ -56,7 +57,7 @@ TEST_SUITE("Contact"){
 
 		SUBCASE("DarkestSecret"){
 				CHECK(c.SetDarkestSecret("DarkestSecret = 42!") == Contact::CheckError::Ok);
-				CHECK(c.GetDarkestSecret() == "DarkestSecret = 42!");
+				CHECK(c.darkest_secret() == "DarkestSecret = 42!");
 				CHECK(c.SetDarkestSecret("") == Contact::CheckError::EmptyLine);
 		}
 	}
