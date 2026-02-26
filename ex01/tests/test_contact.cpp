@@ -43,7 +43,7 @@ TEST_SUITE("Contact"){
 				CHECK(c.SetPhoneNumber("+3429844678") == Contact::CheckError::Ok);
 				CHECK(c.phone_number() == "+3429844678");
 				CHECK(c.SetPhoneNumber("123456789") == Contact::CheckError::Ok);
-				CHECK(c.GetPhoneNumber() == "123456789");
+				CHECK(c.phone_number() == "123456789");
 				CHECK(c.SetPhoneNumber("2") == Contact::CheckError::Ok);
 				
 			// invalid input

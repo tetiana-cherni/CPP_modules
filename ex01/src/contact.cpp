@@ -18,7 +18,7 @@ Contact::Contact()
 Contact::~Contact()
 {
 	#ifdef DEBUG
-		std::cout << "Contact constructor called" << std::endl;
+		std::cout << "Contact destructor called" << std::endl;
 	#endif
 }
 

@@ -5,8 +5,8 @@ CXXFLAGS = -Wall -Wextra -Werror -std=c++17
 BUILD_DIR := obj
 INC_DIR := include
 CXXFLAGS += -I $(INC_DIR)
-SRC_DIR := src
 SRC_MAIN := main.cpp
+SRC_DIR := src
 
 SRC := contact.cpp \
 	phone_book.cpp

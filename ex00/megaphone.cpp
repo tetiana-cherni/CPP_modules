@@ -28,7 +28,7 @@ int	main(int argc, char **argv)
 	{
 		std::string str = argv[i];
 		for (char &c : str)
-			c = std::toupper(static_cast<unsigned char>(c));
+			c = std::toupper((unsigned char)(c));
 		std::cout << str;
 	}
 	std::cout << std::endl;
