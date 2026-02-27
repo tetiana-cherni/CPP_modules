@@ -31,7 +31,7 @@ void PhoneBook::PrintShortMsg(std::string str) const
 	std::cout << std::setw(10) << std::right << str;
 }
 
-void PhoneBook::PrintHeaderTable()
+void PhoneBook::PrintHeaderTable() const
 {
 	PrintShortMsg("Index");
 	std::cout << " | ";
@@ -46,7 +46,7 @@ void PhoneBook::PrintHeaderTable()
 	std::cout << std::endl;
 }
 
-void PhoneBook::PrintContact(int index)
+void PhoneBook::PrintContact(int index) const
 {
 	PrintMsg("First name: ", kGreen, false);
 	PrintMsg(contacts_[index].first_name(), kBlack, true);
@@ -76,7 +76,7 @@ void PhoneBook::PrintBasicMsg() const
 	PrintMsg("EXIT – exit the program", PhoneBook::kBlue, true);
 }
 
-std::string PhoneBook::ReadLine()
+std::string PhoneBook::ReadLine() const
 {
 	std::string	line;
 
@@ -178,7 +178,7 @@ void PhoneBook::AddDarkestSecret(Contact& contact)
 }
 
 
-bool PhoneBook::ShowAllContacts()
+bool PhoneBook::ShowAllContacts() const
 {
 	std::string	str;
 
@@ -203,7 +203,7 @@ bool PhoneBook::ShowAllContacts()
 	return true;
 }
 
-void PhoneBook::ShowContact()
+void PhoneBook::ShowContact() const
 {
 	std::string	input;
 	std::string	num;

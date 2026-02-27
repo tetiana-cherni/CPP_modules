@@ -17,8 +17,8 @@ class PhoneBook {
 
 		void PrintErrorMsg(const std::string& err_msg ) const;
 		void PrintShortMsg(std::string str) const;
-		void PrintHeaderTable();
-		void PrintContact(int index);
+		void PrintHeaderTable() const;
+		void PrintContact(int index) const;
 
 	public:
 
@@ -43,9 +43,9 @@ class PhoneBook {
 
 	void PrintMsg(const std::string& str, const std::string& color, bool print_endl) const;
 	void PrintBasicMsg() const;
-	std::string ReadLine();
-	bool ShowAllContacts();
-	void ShowContact();
+	std::string ReadLine() const;
+	bool ShowAllContacts() const;
+	void ShowContact() const;
 
 };
 
