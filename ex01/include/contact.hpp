@@ -5,6 +5,7 @@
 #include <string>
 #include <cctype>
 
+
 class Contact {
 	private:
 		std::string	first_name_;
@@ -12,9 +13,6 @@ class Contact {
 		std::string	nickname_;
 		std::string	phone_number_;
 		std::string	darkest_secret_;
-
-		bool IsEmptyLine(const std::string& line) const;
-		bool IsValidPhoneNumber(const std::string& line) const;
 
 	public:
 		enum class CheckError{

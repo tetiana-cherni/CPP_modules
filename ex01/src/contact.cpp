@@ -1,5 +1,13 @@
 #include "contact.hpp"
 
+//non member functions
+namespace {
+
+	bool IsEmptyLine(const std::string& line);
+	bool IsValidPhoneNumber(const std::string& line);
+
+}
+
 //constructor
 Contact::Contact()
 {
@@ -22,28 +30,6 @@ Contact::~Contact()
 	#endif
 }
 
-// utility methods
-bool Contact::IsEmptyLine(const std::string& line) const
-{
-	return line.find_first_not_of(" \t") == std::string::npos;
-}
-
-bool Contact::IsValidPhoneNumber(const std::string& line) const
-{
-	size_t start;
-
-	start = line.find_first_not_of(" \t");
-	if (line[start] == '+')
-	{
-		start++;
-		if (start == line.length() - 1)
-			return false;
-	}
-	if (line.find_first_not_of("0123456789", start) == std::string::npos)
-		return true;
-	else
-		return false;
-}
 
 //setter
 
@@ -114,4 +100,29 @@ const std::string& Contact::phone_number() const
 const std::string& Contact::darkest_secret() const
 {
 	return darkest_secret_ ;
+}
+
+namespace {
+	
+	bool IsEmptyLine(const std::string& line)
+	{
+		return line.find_first_not_of(" \t") == std::string::npos;
+	}
+
+	bool IsValidPhoneNumber(const std::string& line)
+	{
+		size_t start;
+
+		start = line.find_first_not_of(" \t");
+		if (line[start] == '+')
+		{
+			start++;
+			if (start == line.length() - 1)
+				return false;
+		}
+		if (line.find_first_not_of("0123456789", start) == std::string::npos)
+			return true;
+		else
+			return false;
+	}
 }

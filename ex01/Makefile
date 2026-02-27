@@ -1,7 +1,7 @@
 NAME := phonebook
 
 CXX := c++
-CXXFLAGS = -Wall -Wextra -Werror -std=c++17 
+CXXFLAGS = -Wall -Wextra -Werror -std=c++17
 BUILD_DIR := obj
 INC_DIR := include
 CXXFLAGS += -I $(INC_DIR)
@@ -49,5 +49,9 @@ test:
 	@echo "Run tests:"
 	@./$(TEST_DIR)/$(TEST_NAME)
 
-.PHONY: all clean fclean re test
+clean_test:
+	@rm -f ./$(TEST_DIR)/$(TEST_NAME)
+	@echo "$(TEST_NAME) cleaning is finished."
+
+.PHONY: all clean fclean re test clean_test 
 
