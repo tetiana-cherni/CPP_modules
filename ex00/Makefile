@@ -16,13 +16,6 @@ SRC_FULL = $(SRC_MAIN) $(SRC)
 
 OBJ := $(addprefix $(BUILD_DIR)/,$(SRC_FULL:.cpp=.o))
 
-# #test
-# TEST_NAME = test_phonebook
-# TEST_DIR := tests
-# TEST_FLAGS := -I $(TEST_DIR) -pthread
-# TEST_SRC := $(addprefix $(SRC_DIR)/, $(SRC)) \
-# 		$(TEST_DIR)/test_contact.cpp \
-
 all: $(NAME)
 
 $(NAME): $(OBJ)
@@ -44,16 +37,6 @@ fclean: clean
 
 re: fclean all
 
-# test:
-# 	@echo "Test compilation starts.."
-# 	@$(CXX) $(CXXFLAGS) $(TEST_FLAGS) $(TEST_SRC) -o $(TEST_DIR)/$(TEST_NAME)
-# 	@echo "Run tests:"
-# 	@./$(TEST_DIR)/$(TEST_NAME)
-
-# clean_test:
-# 	@rm -f ./$(TEST_DIR)/$(TEST_NAME)
-# 	@echo "$(TEST_NAME) cleaning is finished."
-
 .PHONY: all clean fclean re 
-# test clean_test 
+
 
