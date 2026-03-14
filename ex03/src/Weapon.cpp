@@ -1,13 +1,27 @@
-#include <Weapon.hpp>
+#include "Weapon.hpp"
 
-void setType(std::string new_value)
+Weapon::Weapon(std::string new_value) : type(new_value)
 {
-	type_ = new_value;
+	#ifdef DEBUG
+		std::cout << "Weapon constructor called" << std::endl;
+	#endif
 }
 
-const std::string& getType() const
+Weapon::~Weapon()
 {
-	return type_;
+	#ifdef DEBUG
+		std::cout << "Weapon destructor called" << std::endl;
+	#endif
+}
+
+void Weapon::setType(std::string new_value)
+{
+	type = new_value;
+}
+
+const std::string& Weapon::getType() const
+{
+	return type;
 }
 
 
