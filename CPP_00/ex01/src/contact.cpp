@@ -1,0 +1,128 @@
+#include "contact.hpp"
+
+//non member functions
+namespace {
+
+	bool IsEmptyLine(const std::string& line);
+	bool IsValidPhoneNumber(const std::string& line);
+
+}
+
+//constructor
+Contact::Contact()
+{
+	#ifdef DEBUG
+		std::cout << "Contact constructor called" << std::endl;
+	#endif
+
+	first_name_ = "";
+	last_name_ = "";
+	nickname_ = "";
+	phone_number_ = "";
+	darkest_secret_ = "";
+}
+
+//destructor
+Contact::~Contact()
+{
+	#ifdef DEBUG
+		std::cout << "Contact destructor called" << std::endl;
+	#endif
+}
+
+
+//setter
+
+Contact::CheckError Contact::SetFirstName(std::string line)
+{
+	if (IsEmptyLine(line))
+		return CheckError::EmptyLine;
+	first_name_ = line;
+	return CheckError::Ok;
+}
+
+Contact::CheckError Contact::SetLastName(std::string line)
+{
+	if (IsEmptyLine(line))
+		return CheckError::EmptyLine;
+	last_name_ = line;
+	return CheckError::Ok;
+}
+
+Contact::CheckError Contact::SetNickname(std::string line)
+{
+	if (IsEmptyLine(line))
+		return CheckError::EmptyLine;
+	nickname_ = line;
+	return CheckError::Ok;
+}
+
+Contact::CheckError Contact::SetPhoneNumber(std::string line)
+{
+	if (IsEmptyLine(line))
+		return CheckError::EmptyLine;
+	if (!IsValidPhoneNumber(line))
+		return CheckError::NotNumber;
+	phone_number_ = line;
+	return CheckError::Ok;
+}
+
+Contact::CheckError Contact::SetDarkestSecret(std::string line)
+{
+	if (IsEmptyLine(line))
+		return CheckError::EmptyLine;
+	darkest_secret_ = line;
+	return CheckError::Ok;
+}
+
+//getter
+
+const std::string& Contact::first_name() const
+{
+	return first_name_ ;
+}
+
+const std::string& Contact::last_name() const
+{
+	return last_name_ ;
+}
+
+const std::string& Contact::nickname() const
+{
+	return nickname_ ;
+}
+
+const std::string& Contact::phone_number() const
+{
+	return phone_number_ ;
+}
+
+const std::string& Contact::darkest_secret() const
+{
+	return darkest_secret_ ;
+}
+
+namespace {
+	
+	bool IsEmptyLine(const std::string& line)
+	{
+		return line.find_first_not_of(" \t") == std::string::npos;
+	}
+
+	bool IsValidPhoneNumber(const std::string& line)
+	{
+		size_t start;
+
+		start = line.find_first_not_of(" \t");
+		if (line[start] == '+')
+		{
+			start++;
+			if (start == line.length() - 1)
+				return false;
+		}
+		if (line.find_first_not_of("0123456789", start) == std::string::npos)
+			return true;
+		else
+			return false;
+	}
+}
