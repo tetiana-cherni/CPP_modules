@@ -27,8 +27,15 @@ void PhoneBook::PrintErrorMsg(const std::string& err_msg ) const
 void PhoneBook::PrintShortMsg(std::string str) const
 {
 	if (str.length() > 10)
-		str = str.substr(0,9) + ".";
-	std::cout << std::setw(10) << std::right << str;
+	{
+		std::string short_str(10, ' ');
+		for (int i = 0; i < 9; i++)
+			short_str[i] = str[i];
+		short_str[9] = '.';
+		std::cout << std::setw(10) << std::right << short_str;
+	}
+	else
+		std::cout << std::setw(10) << std::right << str;
 }
 
 void PhoneBook::PrintHeaderTable() const
