@@ -18,16 +18,16 @@ Zombie::~Zombie()
 }
 
 //accessor
-void Zombie::SetName(std::string name)
+void Zombie::SetName(const std::string& name)
 {
 	name_ = name;
 }
 
 //mutator
-const std::string& Zombie::name() const
-{
-	return name_ ;
-}
+// const std::string& Zombie::name() const
+// {
+// 	return name_ ;
+// }
 
 void Zombie::announce(void)
 {
