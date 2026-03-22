@@ -12,6 +12,8 @@ int main()
 	zo->announce();
 	delete zo;
 
+	std::cout << std::endl;
+
 	randomChump("Stack_zombie");
 
 	return 0;
