@@ -11,7 +11,7 @@ The primary goal of these modules is to deeply understand Object-Oriented Progra
 I am actively working on this curriculum and publishing modules as I complete and polish them:
 
 - [x] **CPP_00**: Basics, Namespaces, Classes, Member functions, Initializer lists.
-- [ ] **CPP_01**: Memory allocation, Pointers to members, References, Switch statement.
+- [x] **CPP_01**: Memory allocation, Pointers to members, References, Switch statement.
 - [ ] **CPP_02**: Ad-hoc polymorphism, Operator overloading, Orthodox Canonical class form.
 - [ ] **CPP_03**: Inheritance.
 - [ ] **CPP_04**: Subtype polymorphism, Abstract classes, Interfaces.
