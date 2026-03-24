@@ -14,17 +14,10 @@ class Zombie {
 		Zombie();
 		~Zombie();
 
-	//setter
 		void SetName(const std::string& name);
-	//getter
-		// const std::string& name() const;
 
-	//utils
 		void announce(void);
 };
-
-Zombie*	newZombie(std::string name);
-void	randomChump(std::string name);
 
 
 #endif

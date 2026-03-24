@@ -23,7 +23,6 @@ int ReplaceInFile::replace()
 		return 1;
 	}
 
-	// std::ios::app
 	std::ofstream output_file(new_file_name_);
 	if (!output_file.is_open())
 	{

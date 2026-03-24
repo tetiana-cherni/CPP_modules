@@ -6,7 +6,7 @@
 class HumanB {
 	private:
 		Weapon*		weapon_obj = nullptr;
-		std::string	name;
+		std::string	name_;
 
 	public:
 		HumanB(std::string new_name);

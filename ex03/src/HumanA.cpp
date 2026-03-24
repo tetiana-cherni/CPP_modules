@@ -1,6 +1,6 @@
 #include "HumanA.hpp"
 
-HumanA::HumanA(std::string new_name, Weapon& type): name(new_name), weapon_obj(type)
+HumanA::HumanA(std::string new_name, Weapon& type): name_(new_name), weapon_obj(type)
 {
 	#ifdef DEBUG
 		std::cout << "HumanA constructor called" << std::endl;
@@ -15,7 +15,7 @@ HumanA::~HumanA()
 }
 const std::string& HumanA::getName() const
 {
-	return this->name;
+	return name_;
 }
 
 void HumanA::attack()

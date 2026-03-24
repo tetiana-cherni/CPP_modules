@@ -3,7 +3,7 @@
 // use pointer to obj because it could exist or not (reference can't be nullptr)
 // also can change weapon later with setWeapon
 
-HumanB::HumanB(std::string new_name) : name(new_name)
+HumanB::HumanB(std::string new_name) : name_(new_name)
 {
 	#ifdef DEBUG
 		std::cout << "HumanB constructor called" << std::endl;
@@ -19,7 +19,7 @@ HumanB::~HumanB()
 
 const std::string& HumanB::getName() const
 {
-	return (name);
+	return name_;
 }
 
 void HumanB::setWeapon(Weapon& obj)

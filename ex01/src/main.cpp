@@ -5,20 +5,21 @@
 
 #include "Zombie.hpp"
 
-Zombie* zombieHorde( int N, std::string name );
+Zombie *zombieHorde(int N, std::string name);
 
 int main()
 {
-	Zombie	*zo = nullptr;
-	int		N = -3;
+	Zombie *zo = nullptr;
+	int N = 3;
 
-	try {
+	try
+	{
 		zo = zombieHorde(N, "heap_zombie");
 		for (int i = 0; i < N; i++)
 		{
-			// std::cout << "Zombie number = " << i << ":" << std::endl;
 			zo[i].announce();
 		}
+		std::cout << std::endl;
 		delete[] zo;
 	}
 	catch (const std::bad_alloc& error)
