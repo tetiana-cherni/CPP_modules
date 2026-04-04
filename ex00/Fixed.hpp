@@ -13,7 +13,7 @@
 class Fixed {
 	private:
 		int					fixed_value_;
-		static const int	fraction_value_ = 8;
+		static const int	kFractionValue_ = 8;
 	
 	public:
 		Fixed();
