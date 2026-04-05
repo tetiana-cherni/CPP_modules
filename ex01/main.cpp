@@ -23,13 +23,22 @@ int main()
 
 // int main()
 // {
+// 	std::cout << "Next call: Fixed a;" << std::endl;
 // 	Fixed a;
+
+// 	std::cout << "Next call: Fixed const b(10);" << std::endl;
 // 	Fixed const b(10);
+
+// 	std::cout << "Next call: Fixed const c(42.42f);" << std::endl;
 // 	Fixed const c(42.42f);
+
+// 	std::cout << "Next call: Fixed const d(b);" << std::endl;
 // 	Fixed const d(b);
 
+// 	std::cout << "Next call: a = Fixed(1234.4321f);" << std::endl;
 // 	a = Fixed(1234.4321f);
 
+// 	std::cout << std::endl;
 // 	std::cout << "a is " << a << std::endl;
 // 	std::cout << "b is " << b << std::endl;
 // 	std::cout << "c is " << c << std::endl;
