@@ -17,8 +17,8 @@ p (integer) — order (power exponent);
 n^p — characteristic of a number. 
 
 for our task int = 4 byte = 4 * 8 bit 
-8 bit = 2^8 combinations 0&1 = 256 = [0, 255]
-we reserve fractional_bits_ (8) for storing  characteristic of a number
+8 bit = 2^8 combinations 0&1 = 256 = [0, 255] = 1 << kFractionalBits
+we reserve fractional_bits_ (8) for storing  characteristic of a number(float part)
 N (our decimal) = M (int raw_value_) * (n (2 as represent 0&1) ^ (-fractional_bits_))
 M = N / 2^(-fractional_bits)
 M = N * 2^(fracrional_bits)
