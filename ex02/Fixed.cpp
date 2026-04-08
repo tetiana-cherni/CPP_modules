@@ -1,12 +1,5 @@
 #include "Fixed.hpp"
 #include <string_view>
-//anonimus namespace, visible only in this cpp
-namespace {
-	void	PrintMsg(const std::string_view& msg)
-	{
-		std::cout << msg << std::endl;
-	}
-}
 
 Fixed::Fixed(): raw_value_ (0){
 	PrintMsg("Default constructor is called");
@@ -79,7 +72,96 @@ int Fixed::toInt(void) const
 
 }
 
-//free function - custom instruction - how to handle instance of my class
+//comparison operators
+bool Fixed::operator>(const Fixed& right_side) const
+{
+	return raw_value_ > right_side.getRawBits();
+}
+
+bool Fixed::operator<(const Fixed& right_side) const
+{
+	return raw_value_ < right_side.getRawBits();
+}
+
+bool Fixed::operator>=(const Fixed& right_side) const
+{
+	return raw_value_ >= right_side.getRawBits();
+}
+
+bool Fixed::operator<=(const Fixed& right_side) const
+{
+	return raw_value_ <= right_side.getRawBits();
+}
+
+bool Fixed::operator==(const Fixed& right_side) const
+{
+	return raw_value_ == right_side.getRawBits();
+}
+
+bool Fixed::operator!=(const Fixed& right_side) const
+{
+	return raw_value_ != right_side.getRawBits();
+}
+
+//arithmetic operators
+Fixed Fixed::operator+(const Fixed& right_side) const
+{
+	Fixed result;
+	result.setRawBits(raw_value_ + right_side.getRawBits());
+	return result;
+}
+
+Fixed Fixed::operator-(const Fixed& right_side) const
+{
+	Fixed result;
+	result.setRawBits(raw_value_ - right_side.getRawBits());
+	return result;
+}
+
+//be carefull with overflow
+//https://en.cppreference.com/w/cpp/language/static_cast.html
+//https://www.geeksforgeeks.org/cpp/static_cast-in-cpp/
+Fixed Fixed::operator*(const Fixed& right_side) const
+{
+	Fixed result;
+	long new_value = (static_cast<long>(raw_value_) * static_cast<long>(right_side.getRawBits())) / (1 << kFractionalBits);
+	result.setRawBits( static_cast<int>(new_value));
+	return result;
+}
+
+
+Fixed Fixed::operator/(const Fixed& right_side) const
+{
+	Fixed result;
+	long tmp;
+	tmp = (static_cast<long>(raw_value_) << kFractionalBits )/ (right_side.getRawBits());
+	result.setRawBits(static_cast<int>(tmp));
+	return result;
+}
+
+//increment/decrement
+/* Fixed& operator++();//pre-increment
+{
+	int tmp = raw_value_;
+	raw_value + 256
+	return tmp;
+}
+
+Fixed operator++();//post
+Fixed& operator--();//pre-decrement
+Fixed operator--();//post */
+
+//free function 
+//https://en.cppreference.com/w/cpp/language/attributes/maybe_unused.html
+void	PrintMsg([[maybe_unused]] const std::string_view& msg)
+{
+	#ifndef TEST_MODE
+		std::cout << msg << std::endl;
+	#endif
+	// (void)msg;
+}
+
+//custom instruction - how to handle instance of my class
 std::ostream& operator<<(std::ostream& output_stream, const Fixed& obj)
 {
 	output_stream << obj.toFloat();

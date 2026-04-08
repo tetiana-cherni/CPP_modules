@@ -2,10 +2,17 @@ NAME := fixed
 CXX := c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++17 
 BUILD_DIR := obj
-SRC_FULL := main.cpp \
-			Fixed.cpp
+SRC_MAIN := main.cpp 
+SRC := Fixed.cpp
+SRC_FULL := $(SRC_MAIN) $(SRC)
 
 OBJ := $(addprefix $(BUILD_DIR)/, $(SRC_FULL:.cpp=.o))
+
+#test
+TEST_NAME := test_fixed
+TEST_DIR := tests
+TEST_FLAGS := -I $(TEST_DIR) -pthread -DTEST_MODE
+TEST_SRC :=  $(SRC)	$(TEST_DIR)/test_fixed.cpp
 
 all: $(NAME)
 
@@ -28,4 +35,14 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re 
+test:
+	@echo "Test compilation starts.."
+	@$(CXX) $(CXXFLAGS) $(TEST_FLAGS) $(TEST_SRC) -o $(TEST_DIR)/$(TEST_NAME)
+	@echo "Run tests:"
+	@./$(TEST_DIR)/$(TEST_NAME)
+
+clean_test:
+	@rm -f ./$(TEST_DIR)/$(TEST_NAME)
+	@echo "$(TEST_NAME) cleaning is finished."
+
+.PHONY: all clean fclean re test clean_test
