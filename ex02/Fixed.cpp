@@ -129,7 +129,7 @@ Fixed Fixed::operator*(const Fixed& right_side) const
 	return result;
 }
 
-
+//scaling factor 2^8 to keep float part
 Fixed Fixed::operator/(const Fixed& right_side) const
 {
 	Fixed result;
@@ -140,12 +140,15 @@ Fixed Fixed::operator/(const Fixed& right_side) const
 }
 
 //increment/decrement
-/* Fixed& operator++();//pre-increment
+//https://en.cppreference.com/w/cpp/language/operator_precedence.html
+ Fixed& operator++();//pre-increment
 {
 	int tmp = raw_value_;
 	raw_value + 256
 	return tmp;
 }
+
+/*
 
 Fixed operator++();//post
 Fixed& operator--();//pre-decrement
