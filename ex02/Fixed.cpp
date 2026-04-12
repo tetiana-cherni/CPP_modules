@@ -140,19 +140,78 @@ Fixed Fixed::operator/(const Fixed& right_side) const
 }
 
 //increment/decrement
+//prefix increment
 //https://en.cppreference.com/w/cpp/language/operator_precedence.html
- Fixed& operator++();//pre-increment
+//https://www.learncpp.com/cpp-tutorial/overloading-the-increment-and-decrement-operators/
+//smallest step = epsilon = 1/256
+//The overloaded increment and decrement operators return the current 
+// implicit object so multiple operators can be “chained” together.
+//https://stackoverflow.com/questions/7031326/what-is-the-difference-between-prefix-and-postfix-operators
+Fixed& Fixed::operator++()
 {
-	int tmp = raw_value_;
-	raw_value + 256
+	raw_value_ += 1;
+	return *this;
+}
+
+//postfix
+//https://www.learncpp.com/cpp-tutorial/value-categories-lvalues-and-rvalues/
+//value categories: 
+// lvalue (locator value) – expressions evaluate to an identifiable object.
+// rvalue (right value) – expressions evaluate to a value.
+Fixed Fixed::operator++(int)
+{
+	Fixed	tmp(*this);
+
+	raw_value_ += 1;
 	return tmp;
 }
 
-/*
+//prefix decrement
+Fixed& Fixed::operator--()
+{
+	raw_value_ -= 1;
+	return *this;
+}
 
-Fixed operator++();//post
-Fixed& operator--();//pre-decrement
-Fixed operator--();//post */
+//postfix
+Fixed Fixed::operator--(int)
+{
+	Fixed	tmp(*this);
+
+	raw_value_ -= 1;
+	return tmp;
+}
+
+//min-max
+//static methods belong to full class so they haven't "this" pointer
+// => no const in the end of method
+Fixed& Fixed::min(Fixed& a, Fixed& b)
+{
+	if (a < b)
+		return a;
+	return b;
+}
+
+const Fixed& Fixed::min(const Fixed& a, const Fixed& b)
+{
+	if (a < b)
+		return a;
+	return b;
+}
+
+Fixed& Fixed::max(Fixed& a, Fixed& b)
+{
+	if (a > b)
+		return a;
+	return b;
+}
+
+const Fixed& Fixed::max(const Fixed& a, const Fixed& b)
+{
+	if (a > b)
+		return a;
+	return b;
+}
 
 //free function 
 //https://en.cppreference.com/w/cpp/language/attributes/maybe_unused.html
@@ -161,7 +220,6 @@ void	PrintMsg([[maybe_unused]] const std::string_view& msg)
 	#ifndef TEST_MODE
 		std::cout << msg << std::endl;
 	#endif
-	// (void)msg;
 }
 
 //custom instruction - how to handle instance of my class

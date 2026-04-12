@@ -36,15 +36,19 @@ class Fixed {
 		Fixed operator*(const Fixed& right_side) const;
 		Fixed operator/(const Fixed& right_side) const;
 
-/* 	//increment/decrement
+	//increment/decrement dummy (int) to determine where is post- and pre-
 		Fixed& operator++();//pre-increment
-		Fixed operator++();//post
+		Fixed operator++(int);//post
 		Fixed& operator--();//pre-decrement
-		Fixed operator--();//post */
+		Fixed operator--(int);//post
 
 	//min/max
-
+	static Fixed& min(Fixed& a, Fixed& b);
+	static const Fixed& min(const Fixed& a, const Fixed& b);
+	static Fixed& max(Fixed& a, Fixed& b);
+	static const Fixed& max(const Fixed& a, const Fixed& b);
 };
+
 	void	PrintMsg(const std::string_view& msg);
 	std::ostream& operator<<(std::ostream& output_stream, const Fixed& f);
 
