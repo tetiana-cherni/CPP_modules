@@ -1,5 +1,7 @@
 #include "Fixed.hpp"
 
+// #define LOG_STEP(msg) std::cout << "[Line " << __LINE__ << "] " << msg << std::endl
+
 int main()
 {
 	Fixed a;
