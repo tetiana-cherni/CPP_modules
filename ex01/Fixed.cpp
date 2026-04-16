@@ -8,11 +8,14 @@ namespace {
 	}
 }
 
-Fixed::Fixed(): raw_value_ (0){
+Fixed::Fixed():
+	raw_value_ (0)
+{
 	PrintMsg("Default constructor is called");
 };
 
-Fixed::~Fixed(){
+Fixed::~Fixed()
+{
 	PrintMsg("Default destructor is called");
 };
 
@@ -33,7 +36,6 @@ Fixed::Fixed(const Fixed& other)
 {
 	PrintMsg("Copy constructor is called");
 	this->raw_value_ = other.getRawBits();
-	//*this = other;
 }
 
 //always check this isn't self-assignment of class instance
@@ -43,7 +45,6 @@ Fixed& Fixed::operator=(const Fixed& other)
 	if (this != &other)
 	{
 		this->raw_value_ = other.getRawBits();
-		//*this = other;
 	}
 	return *this;
 }

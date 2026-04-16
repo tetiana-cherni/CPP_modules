@@ -26,7 +26,6 @@ Fixed::Fixed(const Fixed& other)
 {
 	PrintMsg("Copy constructor is called");
 	this->raw_value_ = other.getRawBits();
-	//*this = other;
 }
 
 //always check this isn't self-assignment of class instance
@@ -36,7 +35,6 @@ Fixed& Fixed::operator=(const Fixed& other)
 	if (this != &other)
 	{
 		this->raw_value_ = other.getRawBits();
-		//*this = other;
 	}
 	return *this;
 }

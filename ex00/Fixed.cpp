@@ -8,19 +8,23 @@ namespace {
 	}
 }
 
-Fixed::Fixed(): fixed_value_ (0){
+Fixed::Fixed(): 
+	fixed_value_ (0)
+{
 	PrintMsg("Default constructor is called");
 };
 
-Fixed::~Fixed(){
+Fixed::~Fixed()
+{
 	PrintMsg("Default destructor is called");
 };
 
+//https://web.stanford.edu/class/archive/cs/cs106b/cs106b.1084/cs106l/handouts/170_Copy_Constructor_Assignment_Operator.pdf
 Fixed::Fixed(const Fixed& other)
 {
 	PrintMsg("Copy constructor is called");
 	this->fixed_value_ = other.getRawBits();
-	//*this = other;
+	//*this = other; bad practice; rule of Zero
 }
 
 //always check this isn't self-assignment of class instance
@@ -30,7 +34,6 @@ Fixed& Fixed::operator=(const Fixed& other)
 	if (this != &other)
 	{
 		this->fixed_value_ = other.getRawBits();
-		//*this = other;
 	}
 	return *this;
 }
