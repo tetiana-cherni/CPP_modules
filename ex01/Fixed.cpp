@@ -1,12 +1,4 @@
 #include "Fixed.hpp"
-#include <string_view>
-//anonimus namespace, visible only in this cpp
-namespace {
-	void	PrintMsg(const std::string_view& msg)
-	{
-		std::cout << msg << std::endl;
-	}
-}
 
 Fixed::Fixed():
 	raw_value_ (0)
@@ -31,14 +23,12 @@ Fixed::Fixed(const float num)
 	raw_value_ = roundf(num * (1 << kFractionalBits));
 }
 
-//copy constructor
 Fixed::Fixed(const Fixed& other)
 {
 	PrintMsg("Copy constructor is called");
 	this->raw_value_ = other.getRawBits();
 }
 
-//always check this isn't self-assignment of class instance
 Fixed& Fixed::operator=(const Fixed& other)
 {
 	PrintMsg("Copy assignment operator is called");
@@ -49,9 +39,7 @@ Fixed& Fixed::operator=(const Fixed& other)
 	return *this;
 }
 
-
 // member functions
-
 int Fixed::getRawBits(void) const
 {
 	PrintMsg("getRawBits member function called");
@@ -86,3 +74,9 @@ std::ostream& operator<<(std::ostream& output_stream, const Fixed& obj)
 	output_stream << obj.toFloat();
 	return output_stream;
 }
+
+void	PrintMsg(const std::string_view& msg)
+{
+	std::cout << msg << std::endl;
+}
+

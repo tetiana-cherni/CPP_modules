@@ -9,6 +9,8 @@
 #define FIXED_HPP
 
 #include <iostream>
+#include <iomanip>
+#include <string_view>
 
 class Fixed {
 	private:
@@ -17,12 +19,13 @@ class Fixed {
 	
 	public:
 		Fixed();
-		Fixed(const Fixed& other); //copy constructor
-		Fixed& operator=(const Fixed& other); //copy assignment operator
 		~Fixed();
+		Fixed(const Fixed& other);
+		Fixed& operator=(const Fixed& other);
 	
-		int getRawBits( void ) const;
-		void setRawBits( int const raw );
+		int getRawBits(void) const;
+		void setRawBits(int const raw);
+		void PrintMsg(const std::string_view& msg) const;
 
 };
 

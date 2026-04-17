@@ -1,12 +1,4 @@
 #include "Fixed.hpp"
-#include <string_view>
-//anonimus namespace, visible only in this cpp
-namespace {
-	void	PrintMsg(const std::string_view& msg)
-	{
-		std::cout << msg << std::endl;
-	}
-}
 
 Fixed::Fixed(): 
 	fixed_value_ (0)
@@ -38,14 +30,22 @@ Fixed& Fixed::operator=(const Fixed& other)
 	return *this;
 }
 
-int Fixed::getRawBits( void ) const
+int Fixed::getRawBits(void) const
 {
 	PrintMsg("getRawBits member function called");
 	return fixed_value_;
 }
 
-void Fixed::setRawBits( int const raw )
+void Fixed::setRawBits(int const raw)
 {
 	PrintMsg("setRawBits member function called");
 	fixed_value_ = raw;
 }
+
+void	Fixed::PrintMsg(const std::string_view& msg) const
+{
+	std::cout << std::left << std::setw(35) 
+		<< msg << " " << "\033[1m" << this << "\033[0m" 
+		<< std::endl;
+}
+

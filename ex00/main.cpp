@@ -4,9 +4,8 @@
 
 int main()
 {
-
 	Fixed a;
-	Fixed b( a );
+	Fixed b(a);
 	Fixed c;
 
 	c = b;
