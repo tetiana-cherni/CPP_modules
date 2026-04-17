@@ -21,14 +21,12 @@ Fixed::Fixed(const float num)
 	raw_value_ = roundf(num * (1 << kFractionalBits));
 }
 
-//copy constructor
 Fixed::Fixed(const Fixed& other)
 {
 	PrintMsg("Copy constructor is called");
 	this->raw_value_ = other.getRawBits();
 }
 
-//always check this isn't self-assignment of class instance
 Fixed& Fixed::operator=(const Fixed& other)
 {
 	PrintMsg("Copy assignment operator is called");
@@ -39,9 +37,7 @@ Fixed& Fixed::operator=(const Fixed& other)
 	return *this;
 }
 
-
 // member functions
-
 int Fixed::getRawBits(void) const
 {
 	PrintMsg("getRawBits member function called");
@@ -137,7 +133,6 @@ Fixed Fixed::operator/(const Fixed& right_side) const
 	return result;
 }
 
-//increment/decrement
 //prefix increment
 //https://en.cppreference.com/w/cpp/language/operator_precedence.html
 //https://www.learncpp.com/cpp-tutorial/overloading-the-increment-and-decrement-operators/
