@@ -37,5 +37,20 @@
 *.out
 *.app
 
+# CPP_00
+megaphone
+test_phonebook
+phonebook
+# CPP_01
+zombie
+brain
+weapon
+replace
+harl
+harlFilter
+# CPP_02
+fixed
+test_fixed
+
 # debug information files
 *.dwo
