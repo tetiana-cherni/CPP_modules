@@ -54,3 +54,6 @@ test_fixed
 
 # debug information files
 *.dwo
+
+#IDEs and editors
+.vscode/
