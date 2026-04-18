@@ -63,7 +63,6 @@ int Fixed::toInt(void) const
 
 	n = raw_value_ >> kFractionalBits;
 	return n;
-
 }
 
 //comparison operators
@@ -112,9 +111,6 @@ Fixed Fixed::operator-(const Fixed& right_side) const
 	return result;
 }
 
-//be carefull with overflow
-//https://en.cppreference.com/w/cpp/language/static_cast.html
-//https://www.geeksforgeeks.org/cpp/static_cast-in-cpp/
 Fixed Fixed::operator*(const Fixed& right_side) const
 {
 	Fixed result;
@@ -123,34 +119,28 @@ Fixed Fixed::operator*(const Fixed& right_side) const
 	return result;
 }
 
-//scaling factor 2^8 to keep float part
 Fixed Fixed::operator/(const Fixed& right_side) const
 {
 	Fixed result;
 	long tmp;
+	if (right_side.getRawBits() == 0)
+	{
+		throw std::runtime_error("Division by zero");
+	}
 	tmp = (static_cast<long>(raw_value_) << kFractionalBits )/ (right_side.getRawBits());
 	result.setRawBits(static_cast<int>(tmp));
 	return result;
 }
 
 //prefix increment
-//https://en.cppreference.com/w/cpp/language/operator_precedence.html
-//https://www.learncpp.com/cpp-tutorial/overloading-the-increment-and-decrement-operators/
-//smallest step = epsilon = 1/256
-//The overloaded increment and decrement operators return the current 
-// implicit object so multiple operators can be “chained” together.
-//https://stackoverflow.com/questions/7031326/what-is-the-difference-between-prefix-and-postfix-operators
+// prefix increment/decrement
+// overloaded operators return current implicit object for chaining
 Fixed& Fixed::operator++()
 {
 	raw_value_ += 1;
 	return *this;
 }
 
-//postfix
-//https://www.learncpp.com/cpp-tutorial/value-categories-lvalues-and-rvalues/
-//value categories: 
-// lvalue (locator value) – expressions evaluate to an identifiable object.
-// rvalue (right value) – expressions evaluate to a value.
 Fixed Fixed::operator++(int)
 {
 	Fixed	tmp(*this);
@@ -159,14 +149,12 @@ Fixed Fixed::operator++(int)
 	return tmp;
 }
 
-//prefix decrement
 Fixed& Fixed::operator--()
 {
 	raw_value_ -= 1;
 	return *this;
 }
 
-//postfix
 Fixed Fixed::operator--(int)
 {
 	Fixed	tmp(*this);
@@ -176,8 +164,6 @@ Fixed Fixed::operator--(int)
 }
 
 //min-max
-//static methods belong to full class so they haven't "this" pointer
-// => no const in the end of method
 Fixed& Fixed::min(Fixed& a, Fixed& b)
 {
 	if (a < b)
@@ -206,8 +192,7 @@ const Fixed& Fixed::max(const Fixed& a, const Fixed& b)
 	return b;
 }
 
-//free function 
-//https://en.cppreference.com/w/cpp/language/attributes/maybe_unused.html
+//free function
 void	PrintMsg([[maybe_unused]] const std::string_view& msg)
 {
 	#ifndef TEST_MODE
@@ -215,7 +200,6 @@ void	PrintMsg([[maybe_unused]] const std::string_view& msg)
 	#endif
 }
 
-//custom instruction - how to handle instance of my class
 std::ostream& operator<<(std::ostream& output_stream, const Fixed& obj)
 {
 	output_stream << obj.toFloat();

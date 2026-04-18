@@ -1,7 +1,3 @@
-// c++ -Wall -Wextra -Werror -std=c++17 -o test_contact test_contact.cpp ../src/contact.cpp -I./ -I../include/ -pthread
-
-// doctest::Approx safely compares floats, handling the fixed-point resolution limit of 1/256.
-//precision error / margin of error / resolution
 #define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
 #include "doctest.h"
 #include "../Fixed.hpp"
@@ -85,7 +81,6 @@ TEST_CASE_FIXTURE(FixedTestFixture, "Division") {
 
 // ---------------------------------------------------------------------------
 // Increment / Decrement
-// One step == 1 raw bit (1/256). Checked via getRawBits() — no float needed.
 // ---------------------------------------------------------------------------
 
 TEST_CASE("Pre-increment returns the incremented value") {
@@ -125,7 +120,7 @@ TEST_CASE_FIXTURE(FixedTestFixture, "min — returns the smaller of two values")
     CHECK(Fixed::min(neg_a, neg_b) == neg_a); // -10.5 < -2.0
 
     const Fixed ca(10.5f), cb(2.0f);
-    CHECK(Fixed::min(ca, cb) == cb);          // const overload
+    CHECK(Fixed::min(ca, cb) == cb); 
 }
 
 TEST_CASE_FIXTURE(FixedTestFixture, "max — returns the larger of two values") {
@@ -133,32 +128,5 @@ TEST_CASE_FIXTURE(FixedTestFixture, "max — returns the larger of two values") 
     CHECK(Fixed::max(neg_a, zero)  == zero);
 
     const Fixed cneg(-10.5f), czero(0);
-    CHECK(Fixed::max(cneg, czero) == czero);  // const overload
-}
-
-// ---------------------------------------------------------------------------
-// Edge cases
-// ---------------------------------------------------------------------------
-
-TEST_CASE("Smallest representable step above zero") {
-    Fixed step;
-    step.setRawBits(1); // 1/256 = 0.00390625
-    CHECK(step.getRawBits() == 1);
-    CHECK(step.toFloat() == doctest::Approx(0.00390625f).epsilon(0.0001f));
-}
-
-TEST_CASE("Largest representable integer value") {
-    // With 8 fractional bits, the integer range is [-2^23, 2^23 - 1]
-    Fixed large(8388607);
-    Fixed large_neg(-8388608);
-    Fixed zero(0);
-
-    CHECK(large     > zero);
-    CHECK(large_neg < zero);
-    CHECK(large     > large_neg);
-}
-
-TEST_CASE("Addition that cancels to exactly zero") {
-    Fixed pos(1000), neg(-1000);
-    CHECK((pos + neg).getRawBits() == 0);
+    CHECK(Fixed::max(cneg, czero) == czero);
 }

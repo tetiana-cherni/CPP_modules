@@ -11,12 +11,10 @@ Fixed::~Fixed()
 	PrintMsg("Default destructor is called");
 };
 
-//https://web.stanford.edu/class/archive/cs/cs106b/cs106b.1084/cs106l/handouts/170_Copy_Constructor_Assignment_Operator.pdf
 Fixed::Fixed(const Fixed& other)
 {
 	PrintMsg("Copy constructor is called");
 	this->fixed_value_ = other.getRawBits();
-	//*this = other; bad practice; rule of Zero
 }
 
 //always check this isn't self-assignment of class instance
@@ -48,4 +46,3 @@ void	Fixed::PrintMsg(const std::string_view& msg) const
 		<< msg << " " << "\033[1m" << this << "\033[0m" 
 		<< std::endl;
 }
-

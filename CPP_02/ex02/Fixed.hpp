@@ -2,12 +2,14 @@
 #define FIXED_HPP
 
 #include <iostream>
-#include <cmath> 
+#include <cmath>
+#include <stdexcept>
 
 class Fixed {
 	private:
-		int					raw_value_; //mantissa M
-		static const int	kFractionalBits = 8; //scaling factor 2^8	
+		int					raw_value_;
+		static const int	kFractionalBits = 8;
+
 	public:
 		Fixed();
 		~Fixed();
@@ -50,6 +52,5 @@ class Fixed {
 
 	void	PrintMsg(const std::string_view& msg);
 	std::ostream& operator<<(std::ostream& output_stream, const Fixed& f);
-
 
 #endif

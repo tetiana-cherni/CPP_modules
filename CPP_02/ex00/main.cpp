@@ -1,5 +1,3 @@
-// https://en.wikipedia.org/wiki/IEEE_754
-
 #include "Fixed.hpp"
 
 int main()

@@ -16,7 +16,7 @@ int main()
 
 	LOG_STEP(); a = Fixed(1234.4321f);
 
-	PrintMsg("\n_____number_____");
+	PrintMsg("\n_____Overload operator<< for Fixed class_____");
 	std::cout << "a is " << a << std::endl;
 	std::cout << "b is " << b << std::endl;
 	std::cout << "c is " << c << std::endl;

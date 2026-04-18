@@ -68,7 +68,7 @@ int Fixed::toInt(void) const
 
 }
 
-//free function - custom instruction - how to handle instance of my class
+//free functions
 std::ostream& operator<<(std::ostream& output_stream, const Fixed& obj)
 {
 	output_stream << obj.toFloat();
